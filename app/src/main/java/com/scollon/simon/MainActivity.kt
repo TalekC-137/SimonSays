@@ -6,15 +6,16 @@ import android.os.Handler
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
-    var seq_pos = 0
+    var seq_pos = 0 // number of rounds played
+    var rounds = 1
     var seq = listOf<Int>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,11 +32,16 @@ class MainActivity : AppCompatActivity() {
 
         btn_run.setOnClickListener(){
          seqShow()
+            btn_run.visibility  = View.GONE
         }
 
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, seq)
         lista.adapter = adapter
+
+
+
+
 
 
 
@@ -45,10 +51,10 @@ class MainActivity : AppCompatActivity() {
 
         when(view.id){
 
-            R.id.button -> Toast.makeText(this, "L G", Toast.LENGTH_LONG).show()
-            R.id.button2 -> Toast.makeText(this, "P G", Toast.LENGTH_LONG).show()
-            R.id.button3 -> Toast.makeText(this, "L D", Toast.LENGTH_LONG).show()
-            R.id.button4 -> Toast.makeText(this, "P D", Toast.LENGTH_LONG).show()
+            R.id.button -> getButton(1)
+            R.id.button2 -> getButton(2)
+            R.id.button3 -> getButton(3)
+            R.id.button4 -> getButton(4)
 
         }
 
@@ -56,23 +62,34 @@ class MainActivity : AppCompatActivity() {
 
     fun getButton(btn_pushed: Int){
 
-        for(i in 0..seq_pos){
-            if(seq[seq_pos] == btn_pushed){
-                seq_pos++
-                //poka guziora
-            }else{
-                Toast.makeText(this, "źle", Toast.LENGTH_LONG).show()
 
+
+//player got it right
+            if (seq[seq_pos] == btn_pushed) {
+                seq_pos++
+                btnShow(btn_pushed)
+
+                if(seq_pos == rounds){
+                    //player got the whole sequence right
+                    Toast.makeText(this, "brawo", Toast.LENGTH_LONG).show()
+                    seq_pos =0
+                   rounds++
+                    seqShow()
+                }
+
+            } else {
+                // player made a mistake
+                Toast.makeText(this, "źle", Toast.LENGTH_LONG).show()
             }
 
-        }
+
 
     }
 
     fun seqShow(){
-
+    tv_rounds.text = rounds.toString()
             CoroutineScope(Dispatchers.IO).launch    {
-                for (i in 0..seq.size-1){
+                for (i in 0..rounds-1){   // it only shows the sequence to the set number of round that is currently being played
                     delay(TimeUnit.SECONDS.toMillis(1))
                 withContext(Dispatchers.Main) {
                   // this is called after 3 secs
@@ -125,7 +142,6 @@ fun btnShow(btn: Int){
             withContext(Dispatchers.Main) {
                 // this is called after 3 secs
                 button4.setBackgroundResource(R.drawable.kafelek);
-
             }
         }
         button4.setBackgroundResource(R.drawable.kafelek2);
@@ -133,7 +149,6 @@ fun btnShow(btn: Int){
         Toast.makeText(this, "idk how you did this but you broke the game", Toast.LENGTH_LONG).show()
     }
 
-
-}
+ }
 
 }
