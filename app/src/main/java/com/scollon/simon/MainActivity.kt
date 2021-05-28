@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
         }
 
+        btn_save.setOnClickListener(){
+            addRecord()
+        }
+
+
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, seq)
         lista.adapter = adapter
 
@@ -88,6 +93,8 @@ class MainActivity : AppCompatActivity() {
                 tv_score.text = beatenScore.toString()
                cimno.visibility = View.VISIBLE
                 end_game.visibility = View.VISIBLE
+                lastRecord()
+                highScore()
             }
 
 
@@ -173,5 +180,62 @@ fun btnShow(btn: Int){
     }
 
  }
+
+    private fun addRecord() {
+        val score = tv_score.text.toString()
+        val scoreInt = Integer.parseInt(score)
+        val databaseHandler: DatabaseHandler = DatabaseHandler(this)
+        if (!score.isEmpty()) {
+            val status =
+                databaseHandler.addEmployee(RecordModel(0, scoreInt))
+            if (status > -1) {
+                Toast.makeText(applicationContext, "Record saved", Toast.LENGTH_LONG).show()
+            }
+        } else {
+            Toast.makeText(
+                applicationContext,
+                "you messed up fool",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+    private fun getItemsList(): ArrayList<RecordModel> {
+        //creating the instance of DatabaseHandler class
+        val databaseHandler: DatabaseHandler = DatabaseHandler(this)
+        //calling the viewEmployee method of DatabaseHandler class to read the records
+        val empList: ArrayList<RecordModel> = databaseHandler.viewEmployee()
+
+        return empList
+    }
+
+    private fun lastRecord() {
+        val databaseHandler: DatabaseHandler = DatabaseHandler(this)
+
+
+        if(databaseHandler.getBmiCount() != 0){
+
+            var RecordNum = databaseHandler.getBmiCount()
+
+            var modelik: RecordModel? = databaseHandler.getOne(RecordNum)
+
+         var a:Int = modelik?.score ?: 0
+
+            tv_lastScoreView.text = a.toString()
+
+        }
+
+
+    }
+
+    private fun highScore(){
+        val databaseHandler: DatabaseHandler = DatabaseHandler(this)
+        if(databaseHandler.getBmiCount() != 0){
+
+            var rekord = databaseHandler.getBiggestInTheColumn()
+            tv_HighscoreView.text = rekord.toString()
+        }
+
+    }
+
 
 }

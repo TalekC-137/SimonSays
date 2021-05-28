@@ -148,13 +148,56 @@
             android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/tv_highScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="6dp"
+            android:text="Your High Score"
+            android:textColor="#FFFF"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_lastScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_highScore"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="6dp"
+            android:text="Last Saved Score"
+            android:textColor="#FFFF"
+            android:textSize="20dp" />
+
+        <TextView
             android:id="@+id/tv_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:layout_toRightOf="@id/center"
-            android:text="S"
+            android:textColor="#FFFF"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_HighscoreView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_score"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/center"
+            android:textColor="#FFFF"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tv_lastScoreView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_HighscoreView"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/center"
             android:textColor="#FFFF"
             android:textSize="20dp" />
 
@@ -174,7 +217,7 @@
             android:visibility="invisible"></View>
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
