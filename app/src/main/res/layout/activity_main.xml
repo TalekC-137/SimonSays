@@ -222,8 +222,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@id/center"
-            android:text="save"
+            android:text="save" />
 
-            />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
