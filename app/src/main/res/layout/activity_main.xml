@@ -10,6 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#2b87d2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +31,10 @@
             android:layout_height="100dp"
             android:layout_above="@id/button3"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
             android:layout_toLeftOf="@id/srodek"
             android:onClick="klik"
 
@@ -44,10 +45,10 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_above="@+id/button4"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
             android:layout_toRightOf="@id/srodek"
             android:onClick="klik" />
 
@@ -56,10 +57,10 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_below="@id/srodek"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
             android:layout_toLeftOf="@id/srodek"
             android:onClick="klik" />
 
@@ -68,10 +69,10 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_below="@id/srodek"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
             android:layout_toRightOf="@id/srodek"
             android:onClick="klik" />
 
@@ -82,24 +83,27 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/btn_run"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="148dp"
+            android:layout_height="70dp"
             android:layout_below="@id/button3"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
-            android:text="run" />
+            android:background="@drawable/blue"
+            android:text="run"
+            android:textColor="#DDDD" />
 
         <TextView
             android:id="@+id/tv_rounds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="32dp"
+            android:textColor="#DDDD"
             android:textSize="25dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

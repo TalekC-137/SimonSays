@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setBackgroundResource(R.drawable.red1);
+        button.setBackgroundResource(R.drawable.blue);
         button2.setBackgroundResource(R.drawable.blue);
-        button3.setBackgroundResource(R.drawable.green1);
-        button4.setBackgroundResource(R.drawable.yellow1);
+        button3.setBackgroundResource(R.drawable.blue);
+        button4.setBackgroundResource(R.drawable.blue);
         button.isClickable = false
         button2.isClickable = false
         button3.isClickable = false
@@ -135,11 +135,11 @@ fun btnShow(btn: Int){
             delay(TimeUnit.MILLISECONDS.toMillis(500))
             withContext(Dispatchers.Main) {
                 // this is called after 3 secs
-                button.setBackgroundResource(R.drawable.red1);
+                button.setBackgroundResource(R.drawable.blue);
 
             }
         }
-        button.setBackgroundResource(R.drawable.red2);
+        button.setBackgroundResource(R.drawable.white);
     }else if(btn == 2){
         CoroutineScope(Dispatchers.IO).launch    {
             delay(TimeUnit.MILLISECONDS.toMillis(500))
@@ -149,28 +149,28 @@ fun btnShow(btn: Int){
 
             }
         }
-        button2.setBackgroundResource(R.drawable.blue2);
+        button2.setBackgroundResource(R.drawable.white);
     }else if(btn == 3){
 
         CoroutineScope(Dispatchers.IO).launch    {
             delay(TimeUnit.MILLISECONDS.toMillis(500))
             withContext(Dispatchers.Main) {
                 // this is called after 3 secs
-                button3.setBackgroundResource(R.drawable.green1);
+                button3.setBackgroundResource(R.drawable.blue);
 
             }
         }
-        button3.setBackgroundResource(R.drawable.green2);
+        button3.setBackgroundResource(R.drawable.white);
     }else if(btn == 4){
 
         CoroutineScope(Dispatchers.IO).launch    {
             delay(TimeUnit.MILLISECONDS.toMillis(500))
             withContext(Dispatchers.Main) {
                 // this is called after 3 secs
-                button4.setBackgroundResource(R.drawable.yellow1);
+                button4.setBackgroundResource(R.drawable.blue);
             }
         }
-        button4.setBackgroundResource(R.drawable.yellow2);
+        button4.setBackgroundResource(R.drawable.white);
     }else{
         Toast.makeText(this, "idk how you did this but you broke the game", Toast.LENGTH_LONG).show()
     }
