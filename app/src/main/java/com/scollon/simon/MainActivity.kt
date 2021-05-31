@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setBackgroundResource(R.drawable.blue);
-        button2.setBackgroundResource(R.drawable.blue);
-        button3.setBackgroundResource(R.drawable.blue);
-        button4.setBackgroundResource(R.drawable.blue);
+        button.setBackgroundResource(R.drawable.blue)
+        button2.setBackgroundResource(R.drawable.blue)
+        button3.setBackgroundResource(R.drawable.blue)
+        button4.setBackgroundResource(R.drawable.blue)
         button.isClickable = false
         button2.isClickable = false
         button3.isClickable = false
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         button3.isClickable = false
         button4.isClickable = false
 
-    tv_rounds.text = rounds.toString()
+    tv_rounds.text = (rounds-1).toString()
             CoroutineScope(Dispatchers.IO).launch    {
                 for (i in 0..rounds-1){   // it only shows the sequence to the set number of round that is currently being played
                     delay(TimeUnit.SECONDS.toMillis(1))
