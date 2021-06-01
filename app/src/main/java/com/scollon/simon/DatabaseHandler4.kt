@@ -1,21 +1,22 @@
 package com.scollon.simon
 
-import android.database.sqlite.SQLiteOpenHelper
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
+import android.database.sqlite.SQLiteOpenHelper
 
-class DatabaseHandler3(context: Context) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION)  {
+
+class DatabaseHandler4(context: Context) :
+    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "3x3Database"
+        private val DATABASE_NAME = "anotherDatabaseForTheBigOne"
 
-        private val TABLE_CONTACTS = "blocksTable"
+        private val TABLE_CONTACTS = "BigBigTable"
 
         private val KEY_ID = "_id"
         private val KEY_SCORE = "score"
@@ -54,7 +55,7 @@ class DatabaseHandler3(context: Context) :
         val empList: ArrayList<RecordModel> = ArrayList<RecordModel>()
 
         // Query to select all the records from the table.
-        val selectQuery = "SELECT  * FROM ${TABLE_CONTACTS}"
+        val selectQuery = "SELECT  * FROM $TABLE_CONTACTS"
 
         val db = this.readableDatabase
         // Cursor is used to read the record one by one. Add them to data model class.

@@ -6,8 +6,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_activity4x4.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_activity3x3.*
 import kotlinx.android.synthetic.main.activity_main.btn_again
 import kotlinx.android.synthetic.main.activity_main.btn_run
 import kotlinx.android.synthetic.main.activity_main.btn_save
@@ -38,8 +37,7 @@ class Activity3x3 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_activity4x4)
-        btn1.setBackgroundResource(R.drawable.blue)
+        setContentView(R.layout.activity_activity3x3)
 
         basicColor()
         clickableFalse()
@@ -98,7 +96,7 @@ class Activity3x3 : AppCompatActivity() {
 
             if(seq_pos == rounds){
                 //player got the whole sequence right
-                Toast.makeText(this, "brawo", Toast.LENGTH_LONG).show()
+            //    Toast.makeText(this, "brawo", Toast.LENGTH_LONG).show()
                 seq_pos =0
                 rounds++
                 seqShow()
@@ -106,7 +104,7 @@ class Activity3x3 : AppCompatActivity() {
 
         } else {
             // player made a mistake
-            Toast.makeText(this, "źle", Toast.LENGTH_LONG).show()
+          //  Toast.makeText(this, "źle", Toast.LENGTH_LONG).show()
             var beatenScore = rounds-1
             tv_score.text = beatenScore.toString()
             cimno.visibility = View.VISIBLE
@@ -145,8 +143,29 @@ class Activity3x3 : AppCompatActivity() {
     }
 
     fun btnShow(btn: Int){
+// I know I could do it with switch case but i started with ifs so i finished with ifs
+        // imma loop it later
 
-        if(btn == 1){
+        for (i in bloczki.indices){
+
+
+            if(i==btn-1) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    delay(TimeUnit.MILLISECONDS.toMillis(500))
+                    withContext(Dispatchers.Main) {
+                        // this is called after 3 secs
+                        bloczki[i].setBackgroundResource(R.drawable.blue);
+
+                    }
+                }
+                bloczki[i].setBackgroundResource(R.drawable.white);
+
+            }
+        }
+
+
+
+    /*    if(btn == 1){
             CoroutineScope(Dispatchers.IO).launch    {
                 delay(TimeUnit.MILLISECONDS.toMillis(500))
                 withContext(Dispatchers.Main) {
@@ -240,7 +259,7 @@ class Activity3x3 : AppCompatActivity() {
         }else{
             Toast.makeText(this, "idk how you did this but you broke the game", Toast.LENGTH_LONG).show()
         }
-
+*/
     }
 
     private fun addRecord() {
@@ -262,9 +281,7 @@ class Activity3x3 : AppCompatActivity() {
         }
     }
     private fun getItemsList(): ArrayList<RecordModel> {
-        //creating the instance of DatabaseHandler class
         val databaseHandler3: DatabaseHandler3 = DatabaseHandler3(this)
-        //calling the viewEmployee method of DatabaseHandler class to read the records
         val empList: ArrayList<RecordModel> = databaseHandler3.viewEmployee()
 
         return empList

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity4x4"
+    tools:context=".Activity3x3"
     >
 
     <RelativeLayout
@@ -24,190 +24,112 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true" />
 
-
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn1"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_above="@id/button6"
+            android:layout_above="@id/btn5"
             android:layout_centerVertical="true"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/button2"
+            android:layout_marginBottom="8dp"
+            android:layout_toLeftOf="@id/btn2"
             android:onClick="klik"
 
             />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_above="@+id/button6"
+            android:layout_above="@+id/btn5"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/srodek"
+            android:layout_marginBottom="8dp"
             android:onClick="klik" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btn3"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_above="@id/button6"
+            android:layout_above="@id/btn5"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/button2"
+            android:layout_marginBottom="8dp"
+            android:layout_toRightOf="@+id/btn2"
             android:onClick="klik" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btn4"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_above="@id/button6"
+            android:layout_below="@id/btn1"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/button3"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@id/btn5"
             android:onClick="klik" />
+
+
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btn5"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@id/button"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/button6"
-            android:onClick="klik" />
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_above="@id/srodek"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/srodek"
-            android:onClick="klik" />
+            android:onClick="klik"
+            />
+
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btn6"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@+id/button3"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_below="@id/btn3"
+            android:layout_marginLeft="8dp"
             android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/srodek"
+            android:layout_toRightOf="@id/btn5"
             android:onClick="klik" />
+
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btn7"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@id/button4"
+            android:layout_below="@id/btn4"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/button7"
+            android:layout_toLeftOf="@id/btn8"
             android:onClick="klik" />
+
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btn8"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@id/button5"
+            android:layout_below="@id/btn5"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/button6"
             android:onClick="klik" />
+
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/btn9"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_below="@id/srodek"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_below="@id/btn6"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="4dp"
             android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/srodek"
+            android:layout_toRightOf="@id/btn5"
             android:onClick="klik" />
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/srodek"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/srodek"
-            android:onClick="klik" />
-        <Button
-            android:id="@+id/button12"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/srodek"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/button11"
-            android:onClick="klik" />
-        <Button
-            android:id="@+id/button13"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/button9"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@+id/button10"
-            android:onClick="klik" />
-        <Button
-            android:id="@+id/button14"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/button10"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/srodek"
-            android:onClick="klik" />
-        <Button
-            android:id="@+id/button15"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/button11"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/srodek"
-            android:onClick="klik" />
-        <Button
-            android:id="@+id/button16"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@id/button12"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toRightOf="@id/button15"
-            android:onClick="klik" />
+
+
 
         <ListView
             android:id="@+id/lista"
@@ -222,7 +144,7 @@
             android:id="@+id/btn_run"
             android:layout_width="148dp"
             android:layout_height="70dp"
-            android:layout_below="@id/button14"
+            android:layout_below="@id/btn8"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
             android:background="@drawable/blue"

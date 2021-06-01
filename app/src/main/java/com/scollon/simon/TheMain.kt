@@ -19,6 +19,10 @@ class TheMain : AppCompatActivity() {
             val i = Intent(this, Activity3x3::class.java)
             startActivity(i)
         }
+        btn_4x4.setOnClickListener(){
+            val i = Intent(this, Activity4x4::class.java)
+            startActivity(i)
+        }
 
     }
 }

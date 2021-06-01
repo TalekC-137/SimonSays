@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
@@ -14,6 +15,11 @@ class MainActivity : AppCompatActivity() {
     var seq_pos = 0 // number of rounds played
     var rounds = 1
     var seq = listOf<Int>()
+    private val bloczki by lazy { arrayOf(
+        findViewById<Button>(R.id.button), findViewById(R.id.button2),
+        findViewById(R.id.button3),findViewById(R.id.button4)
+    ) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -76,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
                 if(seq_pos == rounds){
                     //player got the whole sequence right
-                    Toast.makeText(this, "brawo", Toast.LENGTH_LONG).show()
+                   // Toast.makeText(this, "brawo", Toast.LENGTH_LONG).show()
                     seq_pos =0
                    rounds++
                     seqShow()
@@ -84,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
             } else {
                 // player made a mistake
-                Toast.makeText(this, "źle", Toast.LENGTH_LONG).show()
+               // Toast.makeText(this, "better luck next time", Toast.LENGTH_LONG).show()
                 var beatenScore = rounds-1
                 tv_score.text = beatenScore.toString()
                cimno.visibility = View.VISIBLE
@@ -115,7 +121,7 @@ class MainActivity : AppCompatActivity() {
                         CoroutineScope(Dispatchers.IO).launch    {
                             delay(TimeUnit.MILLISECONDS.toMillis(500))
                             withContext(Dispatchers.Main) {
-                                // this is called after 3 secs
+                                // this is called after 0.5 sec
                                 button.isClickable = true
                                 button2.isClickable = true
                                 button3.isClickable = true
@@ -130,6 +136,25 @@ class MainActivity : AppCompatActivity() {
 
 fun btnShow(btn: Int){
 
+    for (i in bloczki.indices){
+
+
+        if(i==btn-1) {
+            CoroutineScope(Dispatchers.IO).launch {
+                delay(TimeUnit.MILLISECONDS.toMillis(500))
+                withContext(Dispatchers.Main) {
+                    // this is called after 3 secs
+                    bloczki[i].setBackgroundResource(R.drawable.blue);
+
+                }
+            }
+            bloczki[i].setBackgroundResource(R.drawable.white);
+
+        }
+    }
+
+    //told ya I can loop it
+/*
     if(btn == 1){
         CoroutineScope(Dispatchers.IO).launch    {
             delay(TimeUnit.MILLISECONDS.toMillis(500))
@@ -174,6 +199,7 @@ fun btnShow(btn: Int){
     }else{
         Toast.makeText(this, "idk how you did this but you broke the game", Toast.LENGTH_LONG).show()
     }
+*/
 
  }
 
@@ -196,9 +222,7 @@ fun btnShow(btn: Int){
         }
     }
     private fun getItemsList(): ArrayList<RecordModel> {
-        //creating the instance of DatabaseHandler class
         val databaseHandler: DatabaseHandler = DatabaseHandler(this)
-        //calling the viewEmployee method of DatabaseHandler class to read the records
         val empList: ArrayList<RecordModel> = databaseHandler.viewEmployee()
 
         return empList
