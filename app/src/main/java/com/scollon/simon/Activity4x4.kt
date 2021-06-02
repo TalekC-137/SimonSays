@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_activity3x3.*
+import kotlinx.android.synthetic.main.activity_activity4x4.*
 import kotlinx.android.synthetic.main.activity_main.btn_again
 import kotlinx.android.synthetic.main.activity_main.btn_run
 import kotlinx.android.synthetic.main.activity_main.btn_save
@@ -41,6 +42,7 @@ class Activity4x4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_activity4x4)
+
         basicColor()
         clickableFalse()
 
