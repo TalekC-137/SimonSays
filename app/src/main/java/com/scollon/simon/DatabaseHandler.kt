@@ -14,9 +14,9 @@ class DatabaseHandler(context: Context) :
 
     companion object {
         private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "EmployeeDatabase"
+        private val DATABASE_NAME = "EmployeeDatabase2"
 
-        private val TABLE_CONTACTS = "EmployeeTable"
+        private val TABLE_CONTACTS = "EmployeeTable2"
 
         private val KEY_ID = "_id"
         private val KEY_SCORE = "score"
@@ -24,7 +24,7 @@ class DatabaseHandler(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_CONTACTS_TABLE = ("CREATE TABLE " + TABLE_CONTACTS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_SCORE + " TEXT"
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_SCORE + " INT"
                  + ")")
         db?.execSQL(CREATE_CONTACTS_TABLE)
     }

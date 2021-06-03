@@ -6,12 +6,15 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
+    var activationSpeed: Long = 500 // speed at which the blocks will disapear
     var seq_pos = 0 // number of rounds played
     var rounds = 1
     var seq = listOf<Int>()
@@ -19,10 +22,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button), findViewById(R.id.button2),
         findViewById(R.id.button3),findViewById(R.id.button4)
     ) }
-
+    lateinit var adViewTop : AdView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        adViewTop = findViewById(R.id.adViewTop)
+        val adRequest = AdRequest.Builder().build()
+        adViewTop.loadAd(adRequest)
+
 
         button.setBackgroundResource(R.drawable.blue)
         button2.setBackgroundResource(R.drawable.blue)
@@ -59,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun klik(view: View){
-
+        activationSpeed = 250
         when(view.id){
 
             R.id.button -> getButton(1)
@@ -104,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun seqShow(){
-
+        activationSpeed = 500
         button.isClickable = false
         button2.isClickable = false
         button3.isClickable = false
@@ -141,7 +149,7 @@ fun btnShow(btn: Int){
 
         if(i==btn-1) {
             CoroutineScope(Dispatchers.IO).launch {
-                delay(TimeUnit.MILLISECONDS.toMillis(500))
+                delay(TimeUnit.MILLISECONDS.toMillis(activationSpeed))
                 withContext(Dispatchers.Main) {
                     // this is called after 3 secs
                     bloczki[i].setBackgroundResource(R.drawable.blue);

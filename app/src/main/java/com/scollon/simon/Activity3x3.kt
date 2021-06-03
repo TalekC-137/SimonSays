@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.activity_activity3x3.*
 import kotlinx.android.synthetic.main.activity_main.btn_again
 import kotlinx.android.synthetic.main.activity_main.btn_run
@@ -22,10 +24,11 @@ import java.util.concurrent.TimeUnit
 
 class Activity3x3 : AppCompatActivity() {
 
-
+    var activationSpeed: Long = 500
     var seq_pos = 0 // number of rounds played
     var rounds = 1
     var seq = listOf<Int>()
+    lateinit var adView3 : AdView
 
     private val bloczki by lazy { arrayOf(
         findViewById<Button>(R.id.btn1), findViewById(R.id.btn2),
@@ -39,6 +42,10 @@ class Activity3x3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_activity3x3)
 
+        adView3 = findViewById(R.id.adView3)
+        val adRequest = AdRequest.Builder().build()
+        adView3.loadAd(adRequest)
+
         basicColor()
         clickableFalse()
 
@@ -49,6 +56,7 @@ class Activity3x3 : AppCompatActivity() {
         btn_run.setOnClickListener(){
             seqShow()
             btn_run.visibility  = View.GONE
+
         }
 
         btn_again.setOnClickListener(){
@@ -68,7 +76,7 @@ class Activity3x3 : AppCompatActivity() {
     }
 
     fun klik(view: View){
-
+        activationSpeed = 250
         when(view.id){
 
             R.id.btn1 -> getButton(1)
@@ -118,7 +126,7 @@ class Activity3x3 : AppCompatActivity() {
     }
 
     fun seqShow(){
-
+        activationSpeed = 500
        clickableFalse()
 
         tv_rounds.text = (rounds-1).toString()
@@ -151,7 +159,7 @@ class Activity3x3 : AppCompatActivity() {
 
             if(i==btn-1) {
                 CoroutineScope(Dispatchers.IO).launch {
-                    delay(TimeUnit.MILLISECONDS.toMillis(500))
+                    delay(TimeUnit.MILLISECONDS.toMillis(activationSpeed))
                     withContext(Dispatchers.Main) {
                         // this is called after 3 secs
                         bloczki[i].setBackgroundResource(R.drawable.blue);

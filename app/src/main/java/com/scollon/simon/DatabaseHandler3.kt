@@ -1,21 +1,25 @@
 package com.scollon.simon
 
-import android.database.sqlite.SQLiteOpenHelper
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
+import android.database.sqlite.SQLiteOpenHelper
+import android.database.sqlite.SQLiteStatement
+
+
+
 
 class DatabaseHandler3(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION)  {
 
     companion object {
         private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "3x3Database"
+        private val DATABASE_NAME = "3x3Database2"
 
-        private val TABLE_CONTACTS = "blocksTable"
+        private val TABLE_CONTACTS = "blocksTable2"
 
         private val KEY_ID = "_id"
         private val KEY_SCORE = "score"
@@ -23,7 +27,7 @@ class DatabaseHandler3(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_CONTACTS_TABLE = ("CREATE TABLE " + TABLE_CONTACTS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_SCORE + " TEXT"
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_SCORE + " INT"
                 + ")")
         db?.execSQL(CREATE_CONTACTS_TABLE)
     }
@@ -146,5 +150,10 @@ class DatabaseHandler3(context: Context) :
         return DatabaseUtils.longForQuery(db, "SELECT MAX(score) FROM $TABLE_CONTACTS", null)
             .toInt()
     }
+
+
+
+
+
 
 }

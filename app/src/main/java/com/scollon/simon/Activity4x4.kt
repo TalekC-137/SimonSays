@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import kotlinx.android.synthetic.main.activity_activity3x3.*
 import kotlinx.android.synthetic.main.activity_activity4x4.*
 import kotlinx.android.synthetic.main.activity_main.btn_again
@@ -23,11 +25,11 @@ import java.util.concurrent.TimeUnit
 
 class Activity4x4 : AppCompatActivity() {
 
-
+    var activationSpeed: Long = 500
     var seq_pos = 0 // number of rounds played
     var rounds = 1
     var seq = listOf<Int>()
-
+    lateinit var adView4 : AdView
     private val bloczki by lazy { arrayOf(
         findViewById<Button>(R.id.button), findViewById(R.id.button2),
         findViewById(R.id.button3),findViewById(R.id.button4),
@@ -42,6 +44,10 @@ class Activity4x4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_activity4x4)
+
+        adView4 = findViewById(R.id.adView4)
+        val adRequest = AdRequest.Builder().build()
+        adView4.loadAd(adRequest)
 
         basicColor()
         clickableFalse()
@@ -72,7 +78,7 @@ class Activity4x4 : AppCompatActivity() {
     }
 
     fun klik(view: View){
-
+        activationSpeed = 250
         when(view.id){
 
             R.id.button -> getButton(1)
@@ -129,7 +135,7 @@ class Activity4x4 : AppCompatActivity() {
     }
 
     fun seqShow(){
-
+        activationSpeed = 500
         clickableFalse()
 
         tv_rounds.text = (rounds-1).toString()
@@ -160,7 +166,7 @@ class Activity4x4 : AppCompatActivity() {
 
             if(i==btn-1) {
                 CoroutineScope(Dispatchers.IO).launch {
-                    delay(TimeUnit.MILLISECONDS.toMillis(500))
+                    delay(TimeUnit.MILLISECONDS.toMillis(activationSpeed))
                     withContext(Dispatchers.Main) {
                         // this is called after 3 secs
                         bloczki[i].setBackgroundResource(R.drawable.blue);
